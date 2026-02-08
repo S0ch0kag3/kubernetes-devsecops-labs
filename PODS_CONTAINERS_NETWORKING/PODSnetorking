@@ -1,0 +1,21 @@
+Container Port Mapping WITHOUT Pods
+
+How to allocate ports without getting confilicts, it takes a real understanding how to allocate ports to service to expose service is neccessary for sercurity.
+
+docker run -p 5000:5432 -e POSTGRES_PASSWORD=pwd postgres:9.6.17 # This commands binds teh ports on the pods to the service/application
+
+docker ps will show the out of the create pod with the port being utilized
+
+Another example is through kubernetes, 
+
+kubectl run my-httpd --image=https:2.4 --port=80 #first we will create the pod first
+
+kubectl expose pod my-httpd --type=ClusterIP --port=8080 --target-port=80 #This would be for Internal use only, use port-forward to access
+
+kubectl expose my-httpd --type=NodePort --port=80 --target-port=80 #external access via node IP
+
+kubectl get svc my-httpd	#to see service running
+
+
+
+

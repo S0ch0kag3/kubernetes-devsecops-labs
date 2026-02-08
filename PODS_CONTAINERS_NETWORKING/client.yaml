@@ -1,0 +1,14 @@
+---
+kind: Pod                                 # kind of resource to create
+apiVersion: v1                            # what api resource to rely on
+metadata:                                 # any specific data about the resource
+  name: client
+  labels:
+    run: client
+spec:                                     # what image and action can be completed
+  containers:
+  - name: busybox
+    image: busybox:1.34.0
+    args:
+    - sleep
+    - "10000"

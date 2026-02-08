@@ -1,0 +1,19 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy   # providing teh kind for policy
+metadata:
+  name: test-network-policy
+  namespace: default    # Target the nanespace of the pods you want to control
+spec:
+  podSelector:        # what pods are being controlled
+    matchLabels:     # Labels can help stay organize
+      app: demo-deploy
+  policyTypes:
+  - ingress: 
+  ingress:
+  - from: 
+    - podSelector:
+        matchLabels:
+          run: client
+
+

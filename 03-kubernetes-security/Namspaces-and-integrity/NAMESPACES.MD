@@ -1,0 +1,66 @@
+ can organize cluster by using namespaces, think of namespaces like logical partition that helps organi:wq!ze and isolate resources.
+
+Below are different scenarios where namespace:
+
+Having complex application that use multiple resources, it's difficult to mange resources in the same namespace. Thats its best practice to create
+namespace per resource. It'll help with deployments that have multiple replicasets with services, and configmaps are easier to digest. Namespaces will
+help when working with multiple teams on the same cluster. Have TeamA work on a specific namespace, will prevent making unwanted changes to TeamB deplpyment.
+We can also deploy resource from a nginx-ingress namespace to two other name spaces like staging and deployment. We can also limit CPU, RAM, Storage per NS.
+
+we can use the command
+
+=========================
+## kubectl get namespace
+=========================
+
+will dispaly all the namespaces
+
+========================
+## kubectl cluster-info
+========================
+
+We can monitor and change on the status of namespace, some of the default namespace have specific uses
+
+ Name Spaces    |                 Purposes
+=============== |================================================================================================
+kube-system     |   Should not be utilized for created resources, this namespace is used for system process, Master and Kubectl
+--------------- |------------------------------------------------------------------------------------------------
+kube-public     |   Is used for publicly accessible data and readable bu all clientes. Can also be used for configmap, which contains cluster information
+----------------|------------------------------------------------------------------------------------------------
+kube-node-lease |   Each node has associated lease object in kube-node-lease namespace, also used to determine the availability of a node
+--------------- |------------------------------------------------------------------------------------------------
+default         |   Where we can build Resource and start your new cluster with out firest creating a namespaces
+
+
+
+============================================
+STRUCTURE COMPONENTS
+============================================
+
+
+
+
+
+=============================================
+AVOID CONFLICTS BETWEEN TEAMS
+=============================================
+
+
+
+
+
+
+
+=============================================
+SHARE SERVICES BETWEEN DIFFERENT ENVIRONMENT
+============================================
+
+
+
+
+
+
+
+============================================
+ACCESS AND RESOURCES LIMITS on NS LVL
+============================================

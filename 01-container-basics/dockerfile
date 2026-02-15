@@ -1,0 +1,10 @@
+FROM alpine
+
+LABEL org.opencontainers.image="James Spurin"
+LABEL org.opencontainters.image="Container image for https://github.com/S0ch0kag3/kubernetes-devsecops-labs/tree/main/
+
+WORKDIR 
+
+RUN
+RUN
+RUN

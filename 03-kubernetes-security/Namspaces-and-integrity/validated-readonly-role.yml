@@ -1,0 +1,17 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1        # Which version of the RBAC API this resource belongs to, RBAC is a stable API group, and this version is required for Role and RoleBinding objects.
+kind: Role                                      # declares the type of object being created. A Role is a namespace-scoped permission set
+metadata:                                       # section contains identifying information about the object
+  name: validated-readonly                      # Name of the role, how other objexts, such as RoleBindings, will reference this permission set
+  namespace: validated                          # Limits Role to the validated
+rules:                                        
+  - apiGroups: [""]                             # empty string here refers to the core Kubernetes API group. This group contains basic resources like Pods and Services.
+    resources: ["pods", "services"]             # limits the rule to Pods and Services only. No other resource types are affected by this rule.
+    verbs: ["get", "list", "watch"]             # get allows viewing a single object,list allows listing all objects of that type, watch allows subscribing to updates
+  
+  - apiGroups: ["apps"]                         # rule targets the apps API group
+    resources: ["deployments", "replicasets"]   # allows visibility into Deployments and ReplicaSets
+    verbs: ["get", "list", "watch"]
+
+
+

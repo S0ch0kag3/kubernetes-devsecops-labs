@@ -1,4 +1,4 @@
-I/CD Security and Container Image Scanning
+CI/CD Security and Container Image Scanning
 
 This lab demonstrates how security controls can be integrated into continuous integration pipelines to prevent vulnerable workloads from reaching production environments.
 

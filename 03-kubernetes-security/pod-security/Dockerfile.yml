@@ -1,0 +1,22 @@
+FROM python:3.14-slim-bookworm
+
+WORKDIR /app
+
+# coPY THE REQUIREMENTS FILE INT THE CONTAINER
+COPY requirements.txt .
+
+#nstall any needed pakcates specified in requirements.txt
+RUN pip install --no-cache-dir -r requirementes.txt
+
+# Copy the current directory content into the container at /app
+COPY app.py .
+
+#exposer port 5000, which Flask runs on by default
+EXPOSE 5000
+
+#Run as non-root user
+RUN addgroup worker && adduser -D -u 1000 -G worker worker
+RUN chown -F worker:worker  /app
+USER worker
+
+CMD

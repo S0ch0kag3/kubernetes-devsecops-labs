@@ -2,7 +2,8 @@ FROM python:3.14-slim-bookworm
 
 WORKDIR /app
 
-# coPY THE REQUIREMENTS FILE INT THE CONTAINER
+# COPY THE REQUIREMENTS FILE INT THE CONTAINER
+
 COPY requirements.txt .
 
 #nstall any needed pakcates specified in requirements.txt

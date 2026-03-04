@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2026-03-04T02:31:55Z"
+  name: app-serviceaccount
+  namespace: secure-workloads
+  resourceVersion: "814271"
+  uid: f5154793-df7f-46be-a6c6-565f91b4dfdb

@@ -1,0 +1,134 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Pod","metadata":{"annotations":{},"name":"secure-nginx","namespace":"secure-workloads"},"spec":{"containers":[{"image":"nginx:1.25","name":"nginx","securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"runAsNonRoot":true}}],"securityContext":{"runAsNonRoot":true},"serviceAccountName":"app-serviceaccount"}}
+    creationTimestamp: "2026-03-04T03:09:44Z"
+    generation: 1
+    name: secure-nginx
+    namespace: secure-workloads
+    resourceVersion: "815046"
+    uid: f2c557c8-50ef-49bf-8698-966f84010acb
+  spec:
+    containers:
+    - image: nginx:1.25
+      imagePullPolicy: IfNotPresent
+      name: nginx
+      resources: {}
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - ALL
+        runAsNonRoot: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-tpvgj
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: desktop-d2kvgl8
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      runAsNonRoot: true
+    serviceAccount: app-serviceaccount
+    serviceAccountName: app-serviceaccount
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-tpvgj
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T03:09:46Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T03:09:44Z"
+      observedGeneration: 1
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T03:09:44Z"
+      message: 'containers with unready status: [nginx]'
+      observedGeneration: 1
+      reason: ContainersNotReady
+      status: "False"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T03:09:44Z"
+      message: 'containers with unready status: [nginx]'
+      observedGeneration: 1
+      reason: ContainersNotReady
+      status: "False"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T03:09:44Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - image: nginx:1.25
+      imageID: ""
+      lastState: {}
+      name: nginx
+      ready: false
+      restartCount: 0
+      started: false
+      state:
+        waiting:
+          message: 'container has runAsNonRoot and image will run as root (pod: "secure-nginx_secure-workloads(f2c557c8-50ef-49bf-8698-966f84010acb)",
+            container: nginx)'
+          reason: CreateContainerConfigError
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-tpvgj
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 192.168.127.2
+    hostIPs:
+    - ip: 192.168.127.2
+    observedGeneration: 1
+    phase: Pending
+    podIP: 10.42.0.65
+    podIPs:
+    - ip: 10.42.0.65
+    qosClass: BestEffort
+    startTime: "2026-03-04T03:09:44Z"
+kind: List
+metadata:
+  resourceVersion: ""

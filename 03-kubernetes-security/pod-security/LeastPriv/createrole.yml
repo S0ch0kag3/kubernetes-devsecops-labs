@@ -1,0 +1,19 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"Role","metadata":{"annotations":{},"name":"pod-reader","namespace":"secure-workloads"},"rules":[{"apiGroups":[""],"resources":["pods"],"verbs":["gets","list"]}]}
+  creationTimestamp: "2026-03-04T02:45:57Z"
+  name: pod-reader
+  namespace: secure-workloads
+  resourceVersion: "814557"
+  uid: e03bbbcb-03e1-41ff-9dc6-9ab5a5fc1c2f
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - gets
+  - list

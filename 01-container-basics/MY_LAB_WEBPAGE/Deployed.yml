@@ -1,0 +1,6 @@
+NAME                     READY   STATUS    RESTARTS        AGE     IP           NODE              NOMINATED NODE   READINESS GATES
+client                   1/1     Running   248 (53m ago)   29d     10.42.0.50   desktop-d2kvgl8   <none>           <none>
+labweb-59ff8bd89-8zscr   1/1     Running   0               2m47s   10.42.0.67   desktop-d2kvgl8   <none>           <none>
+labweb-59ff8bd89-lh6kw   1/1     Running   0               2m47s   10.42.0.68   desktop-d2kvgl8   <none>           <none>
+labweb-59ff8bd89-snnmb   1/1     Running   0               2m47s   10.42.0.69   desktop-d2kvgl8   <none>           <none>
+nginx                    1/1     Running   0               12h     10.42.0.66   desktop-d2kvgl8   <none>           <none>

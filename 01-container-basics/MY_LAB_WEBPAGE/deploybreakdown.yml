@@ -1,0 +1,23 @@
+
+apiVersion: apps/v1     #This tells kubernetes what API groups to use
+kind: Deployment        #Higher-level controller that manager podes through ReplicaSets
+metadata:
+    name: nginx-deployment
+    namespace: dev              #deployment inside the dev namespace instead of the default namespace
+    labels:
+      app: nginx                #key-value metadata ta
+spec:                           #spec block defines the desired state of the deployment.Kubernetes controllers continuously reconcile the cluster to match this specification.
+    replicas: 2                 #instructs Kubernetes to run two identical Pods.
+    selector:                   #selector tells the Deployment which Pods it is responsible for managing.
+      matchLabels:
+        app: nginx              
+    template:                   #Every Pod created by this Deployment will follow this template.
+      metadata:
+        labels:                 
+          app: nginx            # These labels are applied to the Pods themselves.They must match the Deployment selector.These labels are also used by Services to route traffic to the correct Pods.
+      spec:                     # Defines teh Pod SPecification including containers volumes security settings nad networking
+        containers:             #Pod conatiners one or more containers
+        - name: nginx           #the name of the container inside the Pod
+          image: nginx:1.25     #image verison being used
+          ports:                #Decalres which ports the container exposes internally
+            containerPort: 80   #container listens on port 80.
